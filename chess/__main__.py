@@ -15,12 +15,16 @@ def print_decipher_remove_column_letters(grid_list, final):
             print(f"old letter: {value}, new letter: {new_letter}")
 
 
-def print_decipher(final):
+def print_decipher(final, shift):
     print(">>>>>> printing decipher without removal:")
+    new_value = []
     for value in final:
         cur_val = ord(value) - 65
-        new_letter = get_new_cipher_value(cur_val, 9)
+        new_letter = get_new_cipher_value(cur_val, shift)
         print(f"old letter: {value}, new letter: {new_letter}")
+        new_value.append(new_letter)
+
+    return "".join(new_value)
 
 
 def get_new_cipher_value(ord_val, shift_count):
@@ -28,7 +32,8 @@ def get_new_cipher_value(ord_val, shift_count):
     return letters[(ord_val + (26 - shift_count)) % len(letters)]
 
 
-grid_string = "FHXJQVZTFIUSUVXRLHOSQQVITCOQTHLDNEUAUOJZVHDEOSOQYLZJHELEDJIEPZAP"
+# grid_string = "FHXJQVZT-FIUSUVXR-LHOSQQVI-TCOQTHLD-NEUAUOJZ-VHDEOSOQ-YLZJHELE-DJIEPZAP"
+grid_string = "DJIEPZAPYLZJHELEVHDEOSOQNEUAUOJZTCOQTHLDLHOSQQVIFIUSUVXRFHXJQVZT"
 coordinate_string = "B8C6E5G6H4F5H6G4F6H5F4E6G5"
 
 grid_list = np.array(list(grid_string))
@@ -37,17 +42,21 @@ print(grid)
 
 coord_list = np.array(list(coordinate_string))
 X_coords = coord_list[::2]
-X_ascii = [ord(x)-65 for x in X_coords]
+X_ascii = [ord(x)-65-1 for x in X_coords]
 Y_coords = coord_list[1::2]
-Y_coords = [(8 - int(y)) for y in Y_coords]
-coords = zip(Y_coords, X_ascii)
+Y_coords = [int(y)-2 for y in Y_coords]
+coords = zip(X_ascii, Y_coords)
 final = []
 for coord in coords:
+    print(f"coord: {coord}")
     final.append(str(grid[coord]))
 
 final_as_string = "".join(final)
 print(f"final: {final} -> as string: {final_as_string}")
 
 
-print_decipher_remove_column_letters(grid_list, final)
-print_decipher(final)
+# print_decipher_remove_column_letters(grid_list, final)
+# for i in range(0, 26):
+#    print_decipher(final, i)
+result = print_decipher(final, 1)
+print(f"result: {result}")
