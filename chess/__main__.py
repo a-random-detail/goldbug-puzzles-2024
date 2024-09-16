@@ -51,8 +51,8 @@ coord_list = np.array(list(coordinate_string))
 X_coords = coord_list[::2]
 X_ascii = [ord(x)-65 for x in X_coords]
 Y_coords = coord_list[1::2]
-Y_coords = [int(y)-1 for y in Y_coords]
-coords = zip(X_ascii, Y_coords)
+Y_coords = [(8 - int(y)) for y in Y_coords]
+coords = zip(Y_coords, X_ascii)
 final = []
 for coord in coords:
     print(f"coord: {coord}")
@@ -65,7 +65,7 @@ print(f"final: {final} -> as string: {final_as_string}")
 # print_decipher_remove_column_letters(grid_list, final)
 # for i in range(0, 26):
 #    print_decipher(final, i)
-result = print_decipher(final, 0)
+result = print_decipher(final, 1)
 print(f"result: {result}")
 sorted = sorted(list(result))
 print(f"sorted result: {sorted}")
@@ -79,7 +79,7 @@ def vigenere_cipher(text, keyword):
     )
 
 
-keyword = "GREUZE"  # Keyword related to the artist
+keyword = "WOOLWINDER"  # Keyword related to the artist
 ciphertext = "HDULDOELSHUJ"
 decrypted_text = vigenere_cipher(final_as_string, keyword)
 ai_decrypted_text = vigenere_cipher(ciphertext, keyword)
