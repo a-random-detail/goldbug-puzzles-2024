@@ -252,4 +252,49 @@ print_cipher_row(row_4_values_converted, 4)
 # CUREVILEACTS!!
 
 # ------------------------
+# JAPAN/NeedleMouse => Hedgehog
+# France/Milk Chicken => EggNog 
+# China/Dragon Shrimp? => Lobster  
+# Iran/ tiny elephant fart? => Popcorn
+# Sweden/Butter goose? => Sandwich
+# SouthAfrica/Muddy Pig?Earth Pig => Aardvark 
+# China/snow cake? => refrigerator
+# Russia/ god's cow => Ladybird
+# Hungary/ Foam girl => Mermaid
+# Germany/Sick car => Ambulance
+# Sweden/frog with a shield => Tortoise
+# Finland/Stairs-slide => Escalator
+# ------------------------
+# Orbital => Oral + bit
+# Passage => Page + ass
+# Tribune => Tune + rib
+# Courage => Cage + our
+# Shallow => Show + all
+# ??? => Pity + ???
+# Capture => Cure + apt
+# Village => Vile + lag
+# Actions => Acts + ion
+# Mandate => Mate + and
+
+# Shallow => Show + all
+# Mandate => Mate + and
+# Capture => Cure + apt
+# Passage => Page + ass
+# Orbital => Oral + bit
+# Actions => Acts + ion
+# Village => Vile + lag
+# Courage => Cage + our
+# Tribune => Tune + rib
+# ??? => Pity + ???
+# ??? => Help + ???
+# ??? => Sail + ???
+#741BA0982653
+letter_values = [7, 4, 1, 11, 10, 0, 9, 8, 2, 6, 5, 3]
+
+key = list('pityhelpsail')
+converted = [key[x] for x in letter_values]
+print(f"result not sorted: {converted}")
+
+# PhilipAstley 
+# Final Answer: CaughtByPress
 
